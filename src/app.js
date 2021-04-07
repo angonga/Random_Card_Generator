@@ -2,12 +2,18 @@ import "./style.css";
 
 window.onload = function() {
   let suit = generateRandomSuit();
+  console.log(suit);
   document.getElementById("card").classList.add(generateRandomSuit());
   document.getElementById("card-number").innerHTML = generateRandomNumber();
-  document.getElementById("icon-top").innerHTML = suit;
-  document.getElementById("icon-bottom").innerHTML = suit;
+  let iconTop = document.getElementById("icon-top");
+  let iconBottom = document.getElementById("icon-bottom");
+  iconTop.innerHTML = suit;
+  iconBottom.innerHTML = suit;
+  if (suit === "♥" || suit === "♦") {
+    iconTop.style.color = "red";
+    iconBottom.style.color = "red";
+  }
 };
-
 let generateRandomNumber = () => {
   let numbers = [
     "A",
@@ -30,17 +36,7 @@ let generateRandomNumber = () => {
 };
 
 const generateRandomSuit = () => {
-  let suit = ["&diams;", "&hearts;", "&spades;", "&clubs;"];
+  let suit = ["♥", "♣", "♦", "♠"];
   let indexSuit = Math.floor(Math.random() * suit.length);
   return suit[indexSuit];
 };
-
-/*function randIcons() {
-  let icons = ["♦", "♥", "♠", "♣"];
-  let rand = Math.floor(Math.random() * icons.lenght);
-  return icons[rand];
-}*/
-
-/*function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min;
-}*/
